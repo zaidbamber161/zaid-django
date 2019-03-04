@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container" style="width:inherit">
+<br>
+<header class="header-color-style">
+  <center>Welcome to My Notes</center>
+</div>
+</div>
+
+<div class="row">
+{% if notes_list %}
+    {% for n in notes_list %}
+    <div class="col-md-4" style="width:auto">
+        <div class="container">
+        <div class="jumbotron"> 
+        <div class="notes-title-style">{{ n.title }}</div>
+        <div class="notes-description-style" >{{ n.description }}</div>
+        <br>
+        <div class="notes-description-style" >Read: {{ n.is_read }}</div>
+        <a href="{% url 'updatenote' n.id %}" class="btn btn-info btn-md">
+            <span class="glyphicon glyphicon-edit"></span> Edit 
+        </a>
+        <a href="{% url 'deletestatus' n.id %}" class="btn btn-info btn-md">
+            <span class="glyphicon glyphicon-remove"></span> Remove 
+        </a>
+        &nbsp;&nbsp;
+        <a href="{% url 'readstatus' n.id %}" class="btn btn-info btn-md">
+                <span class="glyphicon glyphicon-edit"></span> Mark as Read  
+            </a>
+    </div>
+    </div>  
+    {% endfor %}
+{% else %}
+    <div class="container" style="width:inherit">
+    <h3>  No notes are available.</h3>
+{% endif %}     
+</div>
+   
+</div>
+{% endblock %}
+

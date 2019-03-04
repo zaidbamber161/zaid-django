@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+  <header  class="header-color-style">
+    <center > Create Note </center>
+  </header>
+  
+</div>
+    
+<div class="row">
+    <div class="col-md-12">
+                <center>           
+                  <form action="" method="post">
+                    {% csrf_token %}
+                    {% if form.subject.errors %}
+                    <ul>
+                        {% for error in form.subject.errors %}
+                          <li><strong>{{ error|escape }}</strong></li>
+                        {% endfor %}  
+                    </ul>
+                    {% endif %}
+                    <p>
+                      <label for="title">Title:</label>
+                      <input id="title" name="title" type="text" >
+                    </p>
+                      <label for="description">Description:</label>
+                      <textarea id="description" name="description" type="textarea" ></textarea>
+                    <p>
+                      <label for="note_created_date">Date Published:</label>
+                      <input id="note_created_date" name="note_created_date" type="date" />
+                    </p>
+                    <input type="hidden" name="is_active" value="True">
+                    <input type="hidden" name="is_read" value="False">
+                    <input type="submit" class="btn btn-success" value="Submit">
+                </form>
+              </center>
+    </div>
+</div>
+
+</div>
+</body>
+{% endblock %}
